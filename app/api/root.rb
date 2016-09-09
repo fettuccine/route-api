@@ -4,10 +4,10 @@ module Root
     format :json
     prefix :api
 
-    # http://localhost:3000/api/v1/route/all
-    resource :route do
+    # http://localhost:3000/api/v1/routes/list
+    resource :routes do
       desc 'Return all route.'
-      get :all do
+      get '/' do
         {:a => "test"}
       end
     end
