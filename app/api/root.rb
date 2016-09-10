@@ -7,7 +7,7 @@ module Root
     # http://localhost:3000/api/v1/routes/list
     resource :routes do
       desc 'Return all route.'
-      get '/' do
+      get do
         {:a => "test"}
       end
     end

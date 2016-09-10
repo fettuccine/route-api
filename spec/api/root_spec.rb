@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe API::Root do
+describe Root::API do
   context "GET /api/v1/routes/list" do
     it "return empty array" do
       get '/api/v1/routes/list'
