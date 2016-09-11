@@ -9,6 +9,9 @@ gem 'mysql2'
 # redis
 gem 'redis'
 
+# neography
+gem 'neography'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 
@@ -30,6 +33,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 2.14.0'
   gem 'factory_girl_rails', '~> 4.2.1'
+  gem 'guard-rspec'
 end
 
 group :development do
