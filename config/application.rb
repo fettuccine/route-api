@@ -11,6 +11,7 @@ require "action_view/railtie"
 require "action_cable/engine"
 # require "sprockets/railtie"
 require "rails/test_unit/railtie"
+require 'neo4j/railtie'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -29,6 +30,7 @@ module RouteApi
     config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
     config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
     config.autoload_paths += %W(#{config.root}/lib)
+    config.generators { |g| g.orm :neo4j }
     config.generators do |g|
       g.test_framework :rspec,
       fixtures: true,

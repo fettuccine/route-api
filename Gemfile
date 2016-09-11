@@ -50,4 +50,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'grape'
 gem 'hashie-forbidden_attributes'
 
+# for neo4j
+# (setup) http://neo4jrb.readthedocs.io/en/stable/Setup.html
 gem 'neo4j'
