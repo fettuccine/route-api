@@ -3,5 +3,5 @@ test:
   encoding: utf8
   pool: 5
   timeout: 5000
-  username: routeapi
-  password: routeapi
+  database: routeapi_test
+  host: localhost
