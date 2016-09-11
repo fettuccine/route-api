@@ -1,11 +1,7 @@
-default:
+test:
   adapter: mysql2
   encoding: utf8
   pool: 5
   timeout: 5000
-  database: routeapi_default
-  host: localhost
-
-test:
-  <<: *default
   database: routeapi_test
+  host: localhost
