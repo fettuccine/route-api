@@ -4,7 +4,7 @@ development:
 
 test:
   type: server_db
-  url: http://localhost:7474
+  url: http://neo4j:neo4j@localhost:7474
 
 production:
   type: server_db
