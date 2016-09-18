@@ -50,6 +50,14 @@ module Root
       get ':id' do
         Spot.find(params[:id])
       end
+      desc 'Create a new route.'
+      params do
+        requires :name, type: String
+      end
+      post do
+        @spot = Spot.create(name: params[:name])
+        @spot.save
+      end
     end
   end
 end
