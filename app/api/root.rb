@@ -29,6 +29,14 @@ module Root
       get ':id' do
         Route.find(params[:id])
       end
+      desc 'Create a new route.'
+      params do
+        requires :name, type: String
+      end
+      post do
+        @route = Route.create(name: params[:name])
+        @route.save
+      end
     end
     resource :spots do
       desc 'Return all spot.'
