@@ -1,5 +1,5 @@
-module Root
-  class API < Grape::API
+module API
+  class Root < Grape::API
     version 'v1', using: :path
     format :json
     prefix :api

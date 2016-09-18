@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Root::API do
+describe API::Root do
   before(:each) do
     Spot.delete_all
     Route.delete_all
