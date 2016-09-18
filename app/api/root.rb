@@ -20,7 +20,14 @@ module Root
     resource :routes do
       desc 'Return all route.'
       get do
-        {:a => "test"}
+        Route.all
+      end
+      desc 'Return specified route id.'
+      params do
+        requires :id, type: Integer, desc: 'Spot id.'
+      end
+      get ':id' do
+        Route.find(params[:id])
       end
     end
     resource :spots do
@@ -28,7 +35,7 @@ module Root
       get do
         Spot.all
       end
-      desc 'Return all spot.'
+      desc 'Return specified spot id.'
       params do
         requires :id, type: Integer, desc: 'Spot id.'
       end
