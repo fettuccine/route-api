@@ -7,3 +7,13 @@
 $ mysql.server start
 $ neo4j start
 ```
+
+## run autotest
+```
+bundle exec guard -p -l 1
+```
+
+## run server on local
+```
+rails s
+```
