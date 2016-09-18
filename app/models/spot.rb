@@ -4,4 +4,7 @@ class Spot
   property :desc, type: String
   property :long, type: Float
   property :lat, type: Float
+
+  property :created_at
+  property :updated_at
 end
