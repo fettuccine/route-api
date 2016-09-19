@@ -3,6 +3,7 @@ class Route
 
   from_class :Spot
   to_class :Spot
+  type 'route'
 
   property :name, type: String
   property :created_at
