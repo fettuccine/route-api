@@ -30,6 +30,8 @@ module RouteApi
     config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
     config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
     config.autoload_paths += %W(#{config.root}/lib)
+    config.autoload_paths += %W(#{config.root}/app/models/node)
+    config.autoload_paths += %W(#{config.root}/app/models/relation)
     config.generators { |g| g.orm :neo4j }
     config.generators do |g|
       g.test_framework :rspec,
