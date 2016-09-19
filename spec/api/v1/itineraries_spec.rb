@@ -18,12 +18,6 @@ describe V1::Itineraries do
     end
   end
   context "POST /api/v1/itineraries" do
-    it "create 1 new itinerary" do
-      statuses = [{name: "test"}, {name: "test2"}]
-      post '/api/v1/itineraries', statuses.to_json, 'CONTENT_TYPE' => 'application/json' do
-        expect(response.status).to eq 201
-      end
-    end
     it "create many new itineraries" do
       statuses = {name: "test"}
       post '/api/v1/itineraries', statuses.to_json, 'CONTENT_TYPE' => 'application/json' do

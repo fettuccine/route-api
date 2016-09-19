@@ -19,12 +19,6 @@ describe V1::People do
     end
   end
   context "POST /api/v1/people" do
-    it "create many new person" do
-      statuses = [{name: "test"}, {name: "test2"}]
-      post '/api/v1/people', statuses.to_json, 'CONTENT_TYPE' => 'application/json' do
-        expect(response.status).to eq 201
-      end
-    end
     it "create 1 new person" do
       statuses = {name: "test"}
       post '/api/v1/people', statuses.to_json, 'CONTENT_TYPE' => 'application/json' do
