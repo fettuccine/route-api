@@ -15,6 +15,7 @@ module V1
 
     mount V1::Routes
     mount V1::Spots
+    mount V1::Itineraries
 
   end
 end
