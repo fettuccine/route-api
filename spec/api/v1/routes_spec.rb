@@ -29,5 +29,18 @@ describe V1::Routes do
       expect(@spot1.spots.count).to eq 1
       expect(@spot2.spots.count).to eq 0
     end
+    it 'should not create route' do
+      create_route_object = {
+        name: "test",
+        from: @spot1.id,
+        to:   3,
+        desc: "Loren Ipsum"
+      }
+      post '/api/v1/routes', create_route_object.to_json, 'CONTENT_TYPE' => 'application/json' do
+        expect(response.body).to eq 201
+      end
+      expect(@spot1.spots.count).to eq 0
+      expect(@spot2.spots.count).to eq 0
+    end
   end
 end
