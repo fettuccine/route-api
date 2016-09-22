@@ -18,8 +18,7 @@ module V1
         requires :name, type: String
       end
       post do
-        @route = Route.create(name: params[:name])
-        @route.save
+        Route.create(from_node: Spot.find(params[:from]), to_node: Spot.find(params[:to]))
       end
     end
   end
