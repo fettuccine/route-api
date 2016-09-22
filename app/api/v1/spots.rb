@@ -21,6 +21,13 @@ module V1
         @spot = Spot.create(name: params[:name])
         @spot.save
       end
+      desc 'Delete specific spot id'
+      params do
+        requires :id, type: Integer, desc: 'Spot id.'
+      end
+      delete ':id' do
+        @spot = Spot.delete(name: params[:id])
+      end
     end
   end
 end

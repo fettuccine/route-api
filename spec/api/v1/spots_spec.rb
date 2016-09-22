@@ -27,4 +27,11 @@ describe V1::Spots do
       expect(Spot.all.size).to eq 1
     end
   end
+  context "DELETE /api/v1/spots/1" do
+    it "delete 1 spot" do
+      delete '/api/v1/spots/1' do
+        expect(response.status).to eq 200
+      end
+    end
+  end
 end
