@@ -6,6 +6,7 @@ module V1
       get do
         Spot.all
       end
+
       desc 'Return specified spot id.'
       params do
         requires :id, type: Integer, desc: 'Spot id.'
@@ -13,6 +14,7 @@ module V1
       get ':id' do
         Spot.find(params[:id])
       end
+
       desc 'Create a new route.'
       params do
         requires :name, type: String
@@ -21,6 +23,20 @@ module V1
         @spot = Spot.create(name: params[:name])
         @spot.save
       end
+
+      desc 'Update specified spot id.'
+      params do
+        requires :id, type: Integer, desc: 'Spot id.'
+      end
+      put ':id' do
+        @spot = Spot.find(params[:id])
+        @spot.name = params[:name] if params[:name]
+        @spot.long = params[:long] if params[:long]
+        @spot.lat = params[:lat] if params[:lat]
+        @spot.desc = params[:desc] if params[:desc]
+        @spot.save
+      end
+
       desc 'Delete specific spot id'
       params do
         requires :id, type: Integer, desc: 'Spot id.'

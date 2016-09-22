@@ -34,4 +34,17 @@ describe V1::Spots do
       end
     end
   end
+  context "PUT /api/v1/spots/1" do
+    it "update 1 spot" do
+      status = {
+        name: "test",
+        desc: "Loren Ipsum",
+        long: 180.0,
+        lat: 90.0
+      }
+      put '/api/v1/spots/1', status.to_json, 'CONTENT_TYPE' => 'application/json'
+      expect(response).to be_success
+      expect(response.status).to eq(200)
+    end
+  end
 end
