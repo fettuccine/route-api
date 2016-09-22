@@ -22,6 +22,13 @@ module V1
       post do
         Route.create(from_node: Spot.find(params[:from]), to_node: Spot.find(params[:to]))
       end
+      desc 'Remove specified route id'
+      params do
+        requires :id, type: Integer, desc: 'Spot id.'
+      end
+      delete ':id' do
+        Route.delete(params[:id])
+      end
     end
   end
 end

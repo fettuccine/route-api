@@ -42,5 +42,10 @@ describe V1::Routes do
       expect(@spot1.spots.count).to eq 0
       expect(@spot2.spots.count).to eq 0
     end
+    it 'should delete route' do
+      delete '/api/v1/routes/1' do
+        expect(response.body).to eq 201
+      end
+    end
   end
 end
