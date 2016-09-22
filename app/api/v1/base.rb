@@ -5,6 +5,10 @@ module V1
       rack_response({ message: e.message, status: 404 }.to_json, 404)
     end
 
+    rescue_from Grape::Exceptions::ValidationErrors do |e|
+      rack_response e.to_json, 400
+    end
+
     rescue_from :all do |e|
       if Rails.env.development?
         raise e
