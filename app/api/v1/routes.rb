@@ -16,6 +16,8 @@ module V1
       desc 'Create a new route.'
       params do
         requires :name, type: String
+        requires :from, type: String
+        requires :to, type: String
       end
       post do
         Route.create(from_node: Spot.find(params[:from]), to_node: Spot.find(params[:to]))
