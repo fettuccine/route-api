@@ -14,6 +14,15 @@ module V1
         @itinerary = Itinerary.find(params[:id])
         return @itinerary
       end
+
+      desc 'Delete specified itinerary id.'
+      params do
+        requires :id, type: String, desc: 'Spot id.'
+      end
+      delete ':id' do
+        @itinerary = Itinerary.find(params[:id])
+        @itinerary.destroy
+      end
       desc 'Create a new itinerary.'
       params do
         requires :name, type: String

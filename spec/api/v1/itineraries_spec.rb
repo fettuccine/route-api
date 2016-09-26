@@ -28,4 +28,13 @@ describe V1::Itineraries do
       expect(Itinerary.all.size).to eq 1
     end
   end
+  context "DELETE /api/v1/itineraries/:id" do
+    it "remove new itineraries" do
+      @itinerary = Itinerary.create(name: "test1")
+      @itinerary.save
+      expect(Itinerary.all.size).to eq 1
+      delete "/api/v1/itineraries/#{@itinerary.id}"
+      expect(Itinerary.all.size).to eq 0
+    end
+  end
 end
