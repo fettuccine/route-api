@@ -8,7 +8,7 @@ module V1
     rescue_from Grape::Exceptions::ValidationErrors do |e|
       rack_response e.to_json, 400
     end
-
+    
     rescue_from :all do |e|
       if Rails.env.development?
         raise e

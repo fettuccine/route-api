@@ -8,10 +8,11 @@ module V1
       end
       desc 'Return specified itinerary id.'
       params do
-        requires :id, type: Integer, desc: 'Spot id.'
+        requires :id, type: String, desc: 'Spot id.'
       end
       get ':id' do
-        Itinerary.find(params[:id])
+        @itinerary = Itinerary.find(params[:id])
+        return @itinerary
       end
       desc 'Create a new itinerary.'
       params do

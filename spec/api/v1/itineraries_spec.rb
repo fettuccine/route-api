@@ -10,16 +10,18 @@ describe V1::Itineraries do
       expect(response.status).to eq 200
     end
   end
-  context "GET /api/v1/itineraries/1" do
+  context "GET /api/v1/itineraries/:id" do
     it "return itineraries of id" do
-      get '/api/v1/itineraries/1'do
-        expect(response.status).to eq 200
-      end
+      @itinerary = Itinerary.create(name: "test1")
+      @itinerary.save
+      get "/api/v1/itineraries/#{@itinerary.id}"
+      expect(response.status).to eq 200
     end
   end
   context "POST /api/v1/itineraries" do
     it "create many new itineraries" do
-      statuses = {name: "test"}
+      expect(Itinerary.all.size).to eq 0
+      statuses = {name: "test2"}
       post '/api/v1/itineraries', statuses.to_json, 'CONTENT_TYPE' => 'application/json' do
         expect(response.body).to eq 201
       end
