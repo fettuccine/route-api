@@ -9,7 +9,7 @@ module V1
 
       desc 'Return specified spot id.'
       params do
-        requires :id, type: Integer, desc: 'Spot id.'
+        requires :id, type: String, desc: 'Spot id.'
       end
       get ':id' do
         Spot.find(params[:id])

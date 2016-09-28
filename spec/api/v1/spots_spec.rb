@@ -6,16 +6,16 @@ describe V1::Spots do
   end
   context "GET /api/v1/spots" do
     it "return all spot" do
-      get '/api/v1/spots' do
-        expect(response.status).to eq 200
-      end
+      get '/api/v1/spots'
+      expect(response.status).to eq 200
     end
   end
   context "GET /api/v1/spots/1" do
     it "return spot of id" do
-      get '/api/v1/spots/1' do
-        expect(response.status).to eq 200
-      end
+      @spot = Spot.create(name: "test1")
+      @spot.save
+      get "/api/v1/spots/#{@spot.id}"
+      expect(response.status).to eq 200
     end
   end
   context "POST /api/v1/spots" do
