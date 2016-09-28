@@ -21,17 +21,20 @@ describe V1::Spots do
   context "POST /api/v1/spots" do
     it "create 1 new spot" do
       statuses = {name: "test"}
-      post '/api/v1/spots', statuses.to_json, 'CONTENT_TYPE' => 'application/json' do
-        expect(response.body).to eq 201
-      end
+      post '/api/v1/spots', statuses.to_json, 'CONTENT_TYPE' => 'application/json'
+      expect(response.status).to eq 201
       expect(Spot.all.size).to eq 1
     end
   end
   context "DELETE /api/v1/spots/1" do
     it "delete 1 spot" do
-      delete '/api/v1/spots/1' do
-        expect(response.status).to eq 200
-      end
+      expect(Spot.all.size).to eq 0
+      @spot = Spot.create(name: "test1")
+      @spot.save
+      expect(Spot.all.size).to eq 1
+      delete "/api/v1/spots/#{@spot.id}"
+      expect(response.status).to eq 200
+      expect(Spot.all.size).to eq 0
     end
   end
   context "PUT /api/v1/spots/1" do
@@ -42,9 +45,13 @@ describe V1::Spots do
         long: 180.0,
         lat: 90.0
       }
-      put '/api/v1/spots/1', status.to_json, 'CONTENT_TYPE' => 'application/json' do
-        expect(response.status).to eq 200
-      end
+      expect(Spot.all.size).to eq 0
+      @spot = Spot.create(name: "test1")
+      @spot.save
+      expect(Spot.all.size).to eq 1
+      put "/api/v1/spots/#{@spot.id}", status.to_json, 'CONTENT_TYPE' => 'application/json'
+      expect(response.status).to eq 200
+      expect(Spot.all.size).to eq 1
     end
   end
 end
