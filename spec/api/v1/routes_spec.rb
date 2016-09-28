@@ -23,9 +23,8 @@ describe V1::Routes do
         to:   @spot2.id,
         desc: "Loren Ipsum"
       }
-      post '/api/v1/routes', create_route_object.to_json, 'CONTENT_TYPE' => 'application/json' do
-        expect(response.body).to eq 201
-      end
+      post '/api/v1/routes', create_route_object.to_json, 'CONTENT_TYPE' => 'application/json'
+      expect(response.status).to eq 201
       expect(@spot1.spots.count).to eq 1
       expect(@spot2.spots.count).to eq 0
     end
@@ -36,9 +35,8 @@ describe V1::Routes do
         to:   3,
         desc: "Loren Ipsum"
       }
-      post '/api/v1/routes', create_route_object.to_json, 'CONTENT_TYPE' => 'application/json' do
-        expect(response.body).to eq 201
-      end
+      post '/api/v1/routes', create_route_object.to_json, 'CONTENT_TYPE' => 'application/json'
+      expect(response.status).to eq 404
       expect(@spot1.spots.count).to eq 0
       expect(@spot2.spots.count).to eq 0
     end

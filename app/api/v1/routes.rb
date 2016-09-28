@@ -6,13 +6,15 @@ module V1
       get do
         Route.all
       end
+
       desc 'Return specified route id.'
       params do
-        requires :id, type: Integer, desc: 'Spot id.'
+        requires :id, type: String, desc: 'Spot id.'
       end
       get ':id' do
         Route.find(params[:id])
       end
+
       desc 'Create a new route.'
       params do
         requires :name, type: String
@@ -24,7 +26,7 @@ module V1
       end
       desc 'Remove specified route id'
       params do
-        requires :id, type: Integer, desc: 'Spot id.'
+        requires :id, type: String, desc: 'Spot id.'
       end
       delete ':id' do
         Route.delete(params[:id])

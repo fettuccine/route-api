@@ -31,9 +31,9 @@ module V1
       put ':id' do
         @spot = Spot.find(params[:id])
         @spot.name = params[:name] if params[:name]
-        #@spot.long = params[:long] if params[:long]
-        #@spot.lat = params[:lat] if params[:lat]
-        #@spot.desc = params[:desc] if params[:desc]
+        @spot.long = params[:long] if params[:long]
+        @spot.lat = params[:lat] if params[:lat]
+        @spot.desc = params[:desc] if params[:desc]
         @spot.save ? @spot : nil
       end
 
