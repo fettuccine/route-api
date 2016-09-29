@@ -6,6 +6,7 @@ module V1
       get do
         Itinerary.all
       end
+      
       desc 'Return specified itinerary id.'
       params do
         requires :id, type: String, desc: 'Spot id.'
@@ -23,6 +24,7 @@ module V1
         @itinerary = Itinerary.find(params[:id])
         @itinerary.destroy
       end
+
       desc 'Create a new itinerary.'
       params do
         requires :name, type: String

@@ -6,13 +6,26 @@ module V1
       get do
         Person.all
       end
+
       desc 'Return specified people id.'
       params do
-        requires :id, type: Integer, desc: 'Person id.'
+        requires :id, type: String, desc: 'Person id.'
       end
       get ':id' do
         Person.find(params[:id])
       end
+
+      desc 'Update specified people id.'
+      params do
+        requires :id, type: String, desc: 'Person id.'
+        optional :name, type: String, desc: 'Person name.'
+      end
+      put ':id' do
+        @person = Person.find(params[:id])
+        @person.name = params[:name] if params[:name]
+        @person.save ? @person : nil
+      end
+
       desc 'Create a new person.'
       params do
         requires :name, type: String
