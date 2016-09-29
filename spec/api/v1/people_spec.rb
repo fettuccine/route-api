@@ -28,7 +28,7 @@ describe V1::People do
       statuses = {name: "test2"}
       put "/api/v1/people/#{@person.id}", statuses.to_json, 'CONTENT_TYPE' => 'application/json'
       expect(response.status).to eq 200
-      expect(response.body).to contain "test2"
+      expect(response.body).to include "test2"
     end
   end
 
