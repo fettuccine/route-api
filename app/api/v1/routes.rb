@@ -29,7 +29,8 @@ module V1
         requires :id, type: String, desc: 'Spot id.'
       end
       delete ':id' do
-        Route.delete(params[:id])
+        @route = Route.find(params[:id])
+        @route.destroy
       end
     end
   end

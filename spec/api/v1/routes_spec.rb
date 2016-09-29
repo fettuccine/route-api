@@ -41,9 +41,10 @@ describe V1::Routes do
       expect(@spot2.spots.count).to eq 0
     end
     it 'should delete route' do
-      delete '/api/v1/routes/1' do
-        expect(response.body).to eq 201
-      end
+      @route = Route.create(from_node: @spot2, to_node: @spot1)
+      delete "/api/v1/routes/#{@route.id}"
+      expect(response.status).to eq 200
+      expect(@route.exist?).to eq false
     end
   end
 end
