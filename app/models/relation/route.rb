@@ -6,6 +6,7 @@ class Route
   type 'route'
 
   property :name, type: String
+  property :desc, type: String
   property :created_at
   property :updated_at
 end

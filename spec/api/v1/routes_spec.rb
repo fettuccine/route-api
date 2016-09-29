@@ -40,11 +40,27 @@ describe V1::Routes do
       expect(@spot1.spots.count).to eq 0
       expect(@spot2.spots.count).to eq 0
     end
+  end
+  context "DELETE /api/v1/routes/1" do
     it 'should delete route' do
       @route = Route.create(from_node: @spot2, to_node: @spot1)
       delete "/api/v1/routes/#{@route.id}"
       expect(response.status).to eq 200
       expect(@route.exist?).to eq false
+    end
+  end
+  context "PUT /api/v1/routes/1" do
+    it "should update route" do
+      @route = Route.create(from_node: @spot2, to_node: @spot1)
+      update_route_object = {
+        name: "test2",
+        from: @spot1.id,
+        to:   @spot2.id,
+        desc: "tiesto"
+      }
+      put "/api/v1/routes/#{@route.id}", update_route_object.to_json, 'CONTENT_TYPE' => 'application/json'
+      expect(response.status).to eq 200
+      expect(@route.exist?).to eq true
     end
   end
 end

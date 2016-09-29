@@ -8,9 +8,9 @@ module V1
     rescue_from Grape::Exceptions::ValidationErrors do |e|
       rack_response e.to_json, 400
     end
-    
+
     rescue_from :all do |e|
-      if Rails.env.development?
+      if Rails.env.development? || Rails.env.test?
         raise e
       else
         error_response(message: "Internal server error", status: 500)

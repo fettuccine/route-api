@@ -24,6 +24,20 @@ module V1
       post do
         Route.create(from_node: Spot.find(params[:from]), to_node: Spot.find(params[:to]))
       end
+
+      desc 'Update specified route id.'
+      params do
+        requires :id, type: String
+        optional :name, type: String
+        optional :desc, type: String
+      end
+      put ':id' do
+        @route = Route.find(params[:id])
+        @route.name = params[:name] if params[:name]
+        @route.desc = params[:desc] if params[:desc]
+        @route.save ? @route : nil
+      end
+
       desc 'Remove specified route id'
       params do
         requires :id, type: String, desc: 'Spot id.'
