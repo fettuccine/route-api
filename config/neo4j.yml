@@ -1,11 +1,16 @@
-development:
+default: &default
   type: server_db
+  url: <%= ENV['NEO4J_URL'] %>
+
+localhost:
+  <<: *default
   url: http://localhost:7474
+
+development:
+  <<: *default
 
 test:
-  type: server_db
-  url: http://localhost:7474
+  <<: *default
 
 production:
-  type: server_db
-  url: http://localhost:7474
+  <<: *default

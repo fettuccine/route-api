@@ -43,5 +43,8 @@ module RouteApi
       request_specs: false
       g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
+
+    config.neo4j.session_type = :server_db
+    config.neo4j.wait_for_connection = true
   end
 end

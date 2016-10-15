@@ -14,6 +14,16 @@ redis:
   volumes_from:
     - datastore
 
+neo4j:
+  image: neo4j
+  environment:
+    - NEO4J_AUTH=none
+    - NEO4J_ALLOW_STORE_UPGRADE=true
+  ports:
+    - "7474:7474"
+  volumes_from:
+    - datastore
+
 nginx:
   build: containers/nginx
   ports:
@@ -32,7 +42,9 @@ rails:
     - '3000:3000'
   environment:
     RAILS_ENV: development
-    MYSQL_ROOT_PASSWORD: 'pass'
+    MYSQL_ROOT_USER: 'routeapi'
+    MYSQL_ROOT_PASSWORD: 'routeapi'
+    NEO4J_URL: http://neo4j:7474
     DATABASE_URL: mysql2://root:pass@mysql:3306
     REDIS_URL: redis://redis:6379
     SECRET_KEY_BASE: hogehoge
@@ -41,3 +53,4 @@ rails:
   links:
     - mysql
     - redis
+    - neo4j
