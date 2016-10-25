@@ -12,4 +12,4 @@ RUN bundle install # -j4 --without development test
 COPY . /usr/src/app
 
 EXPOSE 3000
-CMD ["bundle", "exec", "rails", "s"]
+CMD ["bundle", "exec", "puma"]
